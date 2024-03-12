@@ -20,11 +20,16 @@ foreach(var line in lines.Skip(1)) {
     }
 }
 
-var i = 0;
-foreach(var car in cars.OrderByDescending(car => car.EngineSizeInCc)) {
-    Console.Write($"{++i}: ");
+var buckets = cars
+    .Where(c => c.Color == "Red")
+    .GroupBy(c => c.EngineSizeInCc);
+// foreach(var bucket in buckets.OrderBy(b => b.Count())) {
+//     Console.WriteLine($"{bucket.Key}cc: {bucket.Count()}");
+// }
+var mostCommonSize = buckets
+    .OrderByDescending(b => b.Count()).First();
+foreach(var car in mostCommonSize) {
     Console.WriteLine(car);
 }
-
 
 
