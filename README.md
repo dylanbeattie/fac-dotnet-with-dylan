@@ -5,9 +5,11 @@ Session 1: .NET Fundamentals
 
 ### **Background**
 
-* What is .NET anyway?
-* C#, F#, VB.NET
+* What is .NET anyway? [https://dotnet.microsoft.com/en-us/](https://dotnet.microsoft.com/en-us/)
 * Just enough history (and why the history sticks)
+* C#, F#, VB.NET - 
+  * [https://www.statista.com/statistics/793628/worldwide-developer-survey-most-used-languages/](https://www.statista.com/statistics/793628/worldwide-developer-survey-most-used-languages/)
+  * [https://www.tiobe.com/tiobe-index/](https://www.tiobe.com/tiobe-index/)
 
 ### Our First .NET App
 
