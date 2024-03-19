@@ -1,18 +1,24 @@
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
+var todos = File.ReadAllLines("todos.txt").ToList();
+var provider = new FacDemoListProvider(todos);
 var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
-var todos = new List<string>() {
-    "Learn .NET",
-    "Birthday drinks",
-    "Eat rice cakes"
-};
+builder.Services.AddRazorPages();
 
-app.MapGet("/", () => "Hello World!");
+builder.Services.AddScoped<IProvideTodoLists>(
+    (IServiceProvider _) => provider);
+
+var app = builder.Build();
+
+app.UseStaticFiles();
+app.UseRouting();
+app.MapRazorPages();
+
+// app.MapGet("/", () => "Hello World!");
 app.MapGet("/time", () => DateTime.Now);
-app.MapGet("/todos", () => todos);
-app.MapPost("/todos", ([FromBody]string body) => {
+app.MapGet("/api/todos", () => todos);
+app.MapPost("/api/todos", ([FromBody] string body) =>
+{
     Console.WriteLine(body);
     todos.Add(body);
     return Results.Created();
@@ -20,3 +26,17 @@ app.MapPost("/todos", ([FromBody]string body) => {
 
 app.Run();
 
+public interface IProvideTodoLists
+{
+    public List<String> GetTodoList();
+}
+
+public class FacDemoListProvider : IProvideTodoLists
+{
+    private List<string> todos;
+
+    public FacDemoListProvider(List<string> todos) {
+        this.todos = todos;  
+    }
+    public List<string> GetTodoList() => todos;
+}

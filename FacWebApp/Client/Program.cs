@@ -10,5 +10,5 @@ while(true) {
     var content = new StringContent(json, 
         Encoding.UTF8,
         "application/json");
-    await http.PostAsync("https://db5ee1b9512a.ngrok.app/todos", content);
+    await http.PostAsync("https://db5ee1b9512a.ngrok.app/api/todos", content);
 }

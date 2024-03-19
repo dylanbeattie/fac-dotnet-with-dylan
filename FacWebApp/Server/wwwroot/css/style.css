@@ -1,0 +1,16 @@
+body {
+    background-color: aquamarine;
+    color: purple;
+    font-family: 'Comic Sans MS', monospace;
+}
+/* ul.todo {
+    display: flex;
+    flex-direction:column;
+} */
+
+/* ul.todo li {
+    width: 100px;  /* Or whatever */
+    margin: auto;  /* Magic! */
+    list-style: none;
+}
+ */

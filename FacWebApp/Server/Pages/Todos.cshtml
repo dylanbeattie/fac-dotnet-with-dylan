@@ -1,0 +1,17 @@
+@page
+@model TodosPageModel
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Todos</title>
+        <link rel="stylesheet" href="/css/style.css" />
+    </head>
+    <body>
+        <h1>Todo:</h1>
+        <ul class="todo">
+            @foreach(var todo in Model.TodoItems) {
+                <li>@todo</li>
+            }
+        </ul>
+    </body>
+</html>
